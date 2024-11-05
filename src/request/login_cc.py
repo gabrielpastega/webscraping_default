@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+import os
+
 
 with requests.Session() as s:
 
@@ -14,8 +16,8 @@ with requests.Session() as s:
     cleaned_form_id = form_id.replace('\\"', '')
         
     payload = {
-        'name': 'gabrielpastega',
-        'pass': 'Kobake123!',
+        'name': os.getenv('login'),
+        'pass': os.getenv('senha'),
         'csrfToken': cleaned_token,
         'form_build_id': cleaned_form_id,
         'form_id': 'ajax_login_form'
