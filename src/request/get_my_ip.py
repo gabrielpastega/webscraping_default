@@ -1,11 +1,15 @@
 import requests as r
 
 url = "http://lumtest.com/myip.json"
-url2 = "https://www.globo.com"
 
-response = r.get(url2)
+headers = {
+    "header": "content"
+}
+
+response = r.get(url)
 
 if response.status_code == 200:
-    print(response.json())
+    print("Endereço IP:", response.json())
+    print("Cidade", response.json()["geo"])
 else: 
-    print("Error")
+    print("Erro na requisição: ", response.status_code)
